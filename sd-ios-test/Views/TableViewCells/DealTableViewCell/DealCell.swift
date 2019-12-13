@@ -15,6 +15,7 @@ class DealCell: UITableViewCell {
     @IBOutlet weak var extraLabel: UILabel!
     @IBOutlet weak var votesLabel: UILabel!
     @IBOutlet weak var commentsLabel: UILabel!
+    @IBOutlet weak var dealImage: UIImageView!
 
     func configure(dealSummary: DealSummary) {
         priceLabel.text = "\(dealSummary.price)"
@@ -22,5 +23,6 @@ class DealCell: UITableViewCell {
         extraLabel.text = "\(dealSummary.extra)"
         votesLabel.text = "\(dealSummary.voteCount)"
         commentsLabel.text = "\(dealSummary.commentCount)"
+        dealImage.loadFrom(url: dealSummary.image)
     }
 }

@@ -19,12 +19,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 120
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DealCell", for: indexPath) as? DealCell
         else { return UITableViewCell() }
+        cell.dealImage.image = nil
         cell.configure(dealSummary: dealsArray[indexPath.row])
         return cell
     }
@@ -49,7 +50,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     title: deal.title ?? "N/A",
                                     extra: deal.extra ?? "",
                                     voteCount: deal.up_votes ?? 0,
-                                    commentCount: deal.comments ?? 0)
+                                    commentCount: deal.comments ?? 0,
+                                    image: URL(string: deal.image ?? "")!)
                     )
 
                 }
