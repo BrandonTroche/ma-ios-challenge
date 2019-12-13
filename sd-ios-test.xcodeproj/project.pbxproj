@@ -9,12 +9,17 @@
 /* Begin PBXBuildFile section */
 		C9916282233C2036005B3F5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9916281233C2036005B3F5F /* AppDelegate.swift */; };
 		C9916284233C2036005B3F5F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9916283233C2036005B3F5F /* SceneDelegate.swift */; };
-		C9916286233C2036005B3F5F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9916285233C2036005B3F5F /* ViewController.swift */; };
+		C9916286233C2036005B3F5F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9916285233C2036005B3F5F /* MainViewController.swift */; };
 		C9916289233C2036005B3F5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9916287233C2036005B3F5F /* Main.storyboard */; };
 		C991628B233C2038005B3F5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C991628A233C2038005B3F5F /* Assets.xcassets */; };
 		C991628E233C2038005B3F5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C991628C233C2038005B3F5F /* LaunchScreen.storyboard */; };
 		C9916299233C2038005B3F5F /* sd_ios_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9916298233C2038005B3F5F /* sd_ios_testTests.swift */; };
 		C99162B5233C2767005B3F5F /* DealTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99162B4233C2767005B3F5F /* DealTableViewCell.xib */; };
+		CA37D4CD23A347C3004887DE /* DealSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA37D4CC23A347C3004887DE /* DealSummary.swift */; };
+		CA37D4CF23A347FE004887DE /* DealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA37D4CE23A347FE004887DE /* DealCell.swift */; };
+		CA37D4D323A34B5C004887DE /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA37D4D223A34B5C004887DE /* Deal.swift */; };
+		CA37D4D523A34DE1004887DE /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA37D4D423A34DE1004887DE /* Networking.swift */; };
+		CA37D4D823A362BB004887DE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA37D4D723A362BB004887DE /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +36,7 @@
 		C991627E233C2036005B3F5F /* sd-ios-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sd-ios-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9916281233C2036005B3F5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9916283233C2036005B3F5F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C9916285233C2036005B3F5F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C9916285233C2036005B3F5F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C9916288233C2036005B3F5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C991628A233C2038005B3F5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C991628D233C2038005B3F5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +45,11 @@
 		C9916298233C2038005B3F5F /* sd_ios_testTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sd_ios_testTests.swift; sourceTree = "<group>"; };
 		C991629A233C2038005B3F5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C99162B4233C2767005B3F5F /* DealTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DealTableViewCell.xib; sourceTree = "<group>"; };
+		CA37D4CC23A347C3004887DE /* DealSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealSummary.swift; sourceTree = "<group>"; };
+		CA37D4CE23A347FE004887DE /* DealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealCell.swift; sourceTree = "<group>"; };
+		CA37D4D223A34B5C004887DE /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
+		CA37D4D423A34DE1004887DE /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		CA37D4D723A362BB004887DE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +91,13 @@
 		C9916280233C2036005B3F5F /* sd-ios-test */ = {
 			isa = PBXGroup;
 			children = (
-				C99162B2233C273A005B3F5F /* CustomViews */,
+				CA37D4D623A362AF004887DE /* Helpers */,
+				CA37D4D123A349BA004887DE /* Networking */,
+				CA37D4D023A3485D004887DE /* Controllers */,
+				CA37D4CB23A347A5004887DE /* Models */,
+				C99162B2233C273A005B3F5F /* Views */,
 				C9916281233C2036005B3F5F /* AppDelegate.swift */,
 				C9916283233C2036005B3F5F /* SceneDelegate.swift */,
-				C9916285233C2036005B3F5F /* ViewController.swift */,
 				C9916287233C2036005B3F5F /* Main.storyboard */,
 				C991628A233C2038005B3F5F /* Assets.xcassets */,
 				C991628C233C2038005B3F5F /* LaunchScreen.storyboard */,
@@ -102,12 +115,12 @@
 			path = "sd-ios-testTests";
 			sourceTree = "<group>";
 		};
-		C99162B2233C273A005B3F5F /* CustomViews */ = {
+		C99162B2233C273A005B3F5F /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				C99162B3233C2742005B3F5F /* TableViewCells */,
 			);
-			path = CustomViews;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		C99162B3233C2742005B3F5F /* TableViewCells */ = {
@@ -122,8 +135,42 @@
 			isa = PBXGroup;
 			children = (
 				C99162B4233C2767005B3F5F /* DealTableViewCell.xib */,
+				CA37D4CE23A347FE004887DE /* DealCell.swift */,
 			);
 			path = DealTableViewCell;
+			sourceTree = "<group>";
+		};
+		CA37D4CB23A347A5004887DE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CA37D4CC23A347C3004887DE /* DealSummary.swift */,
+				CA37D4D223A34B5C004887DE /* Deal.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CA37D4D023A3485D004887DE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C9916285233C2036005B3F5F /* MainViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CA37D4D123A349BA004887DE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				CA37D4D423A34DE1004887DE /* Networking.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		CA37D4D623A362AF004887DE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CA37D4D723A362BB004887DE /* Extensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +183,7 @@
 				C991627A233C2036005B3F5F /* Sources */,
 				C991627B233C2036005B3F5F /* Frameworks */,
 				C991627C233C2036005B3F5F /* Resources */,
+				CA37D4CA23A34690004887DE /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -223,14 +271,40 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CA37D4CA23A34690004887DE /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint autocorrect\nelse\necho \"warning: SwiftLint is not installed, download from https://github.com/realm/SwiftLint or run brew install swiftlint with homebrew\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C991627A233C2036005B3F5F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9916286233C2036005B3F5F /* ViewController.swift in Sources */,
+				CA37D4CD23A347C3004887DE /* DealSummary.swift in Sources */,
+				C9916286233C2036005B3F5F /* MainViewController.swift in Sources */,
+				CA37D4D323A34B5C004887DE /* Deal.swift in Sources */,
+				CA37D4D823A362BB004887DE /* Extensions.swift in Sources */,
 				C9916282233C2036005B3F5F /* AppDelegate.swift in Sources */,
+				CA37D4CF23A347FE004887DE /* DealCell.swift in Sources */,
 				C9916284233C2036005B3F5F /* SceneDelegate.swift in Sources */,
+				CA37D4D523A34DE1004887DE /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
