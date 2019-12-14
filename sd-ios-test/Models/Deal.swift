@@ -21,4 +21,21 @@ struct Deal: Decodable {
     let flag_background_color: String?
 
     func getScore() -> Int { return ( (up_votes ?? 0) + (comments ?? 0) * 8 )}
+
+    func parsePrice() -> Float? {
+        guard let price = price else { return nil }
+
+        var returnPrice: Float?
+
+        if price == "FREE" {
+            return 0
+        }
+
+        let numericPrice = price.replacingOccurrences(of: "$", with: "")
+
+        returnPrice = Float(numericPrice)
+
+        return returnPrice
+    }
+
 }

@@ -17,7 +17,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var totalLabel: UILabel = {
         let totalLabel = UILabel(
             frame: CGRect(x: 0,
-                          y: 0, // UIScreen.main.bounds.height - 30,
+                          y: 0,
                           width: 80,
                           height: 20)
         )
@@ -65,6 +65,98 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dealsArrayWorking.count
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DealCell", for: indexPath) as? DealCell
+        else { return UITableViewCell() }
+        cell.dealImage.image = nil
+        cell.configure(dealSummary: dealsArrayWorking[indexPath.row])
+        return cell
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        loadUI()
+    }
+}
+
+extension MainViewController {
+
+    func loadUI() {
+        tableView.register(UINib(nibName: "DealTableViewCell", bundle: nil), forCellReuseIdentifier: "DealCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.reloadData()
+
+        self.view.addSubview(totalLabel)
+
+        totalLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            totalLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIScreen.main.bounds.width - 75),
+            totalLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10)
+        ])
+
+        fetchData()
+
+    }
+
+   func checkDefaults() {
+       guard let filterSetting = self.defaults.string(forKey: "filter") else { return }
+       self.sortList(by: filterSetting)
+       switch filterSetting {
+           case "SHL":
+               self.scoreSegmentOutlet.selectedSegmentIndex = 1
+           case "SLH":
+               self.scoreSegmentOutlet.selectedSegmentIndex = 2
+           case "PHL":
+               self.priceSegmentOutlet.selectedSegmentIndex = 1
+           case "PLH":
+               self.priceSegmentOutlet.selectedSegmentIndex = 2
+       default:
+           break
+       }
+   }
+
+   func fetchData() {
+       Networking.shared.getSlickDeals { deals in
+
+           DispatchQueue.main.async {
+               for deal in deals {
+
+                   let currentDeal = DealSummary(
+                       priceTag: deal.price ?? "",
+                       associatedPrice: deal.parsePrice(),
+                       title: deal.title ?? "N/A",
+                       extra: deal.extra ?? "",
+                       voteCount: deal.up_votes ?? 0,
+                       commentCount: deal.comments ?? 0,
+                       image: URL(string: deal.image ?? "")!,
+                       score: deal.getScore()
+                   )
+
+                   self.dealsArrayWorking.append(currentDeal)
+
+                   self.dealsArrayOriginal.append(currentDeal)
+
+                   self.checkDefaults()
+
+               }
+
+               self.tableView.reloadData()
+           }
+
+       }
+   }
+
     func sortList(by sortKind: String) {
         defaults.set(sortKind, forKey: "filter")
         switch sortKind {
@@ -92,118 +184,5 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func reset(segment Segment: UISegmentedControl) {
         Segment.selectedSegmentIndex = 0
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dealsArrayWorking.count
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DealCell", for: indexPath) as? DealCell
-        else { return UITableViewCell() }
-        cell.dealImage.image = nil
-        cell.configure(dealSummary: dealsArrayWorking[indexPath.row])
-        return cell
-    }
-
-    func loadUI() {
-        tableView.register(UINib(nibName: "DealTableViewCell", bundle: nil), forCellReuseIdentifier: "DealCell")
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.reloadData()
-
-        self.view.addSubview(totalLabel)
-
-        totalLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            totalLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: UIScreen.main.bounds.width - 75),
-            totalLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10)
-        ])
-
-        print(self.defaults.string(forKey: "filter"))
-
-        fetchData()
-
-    }
-
-    func parsePrice(price: String?) -> Float? {
-        guard let price = price else { return nil }
-
-        var returnPrice: Float?
-
-        if price == "FREE" {
-            return 0
-        }
-
-        let numericPrice = price.replacingOccurrences(of: "$", with: "")
-
-        returnPrice = Float(numericPrice)
-
-        return returnPrice
-
-    }
-
-    func fetchData() {
-        Networking.shared.getSlickDeals { deals in
-
-            DispatchQueue.main.async {
-                for deal in deals {
-
-                    self.dealsArrayWorking.append(
-                        DealSummary(priceTag: deal.price ?? "",
-                                    associatedPrice: self.parsePrice(price: deal.price),
-                                    title: deal.title ?? "N/A",
-                                    extra: deal.extra ?? "",
-                                    voteCount: deal.up_votes ?? 0,
-                                    commentCount: deal.comments ?? 0,
-                                    image: URL(string: deal.image ?? "")!,
-                                    score: deal.getScore()
-                                    )
-                    )
-
-                    self.dealsArrayOriginal.append(
-                        DealSummary(priceTag: deal.price ?? "",
-                                    associatedPrice: self.parsePrice(price: deal.price),
-                                    title: deal.title ?? "N/A",
-                                    extra: deal.extra ?? "",
-                                    voteCount: deal.up_votes ?? 0,
-                                    commentCount: deal.comments ?? 0,
-                                    image: URL(string: deal.image ?? "")!,
-                                    score: deal.getScore()
-                                    )
-                    )
-
-                    guard let filterSetting = self.defaults.string(forKey: "filter") else { return }
-                    self.sortList(by: filterSetting)
-                    switch filterSetting {
-                        case "SHL":
-                            self.scoreSegmentOutlet.selectedSegmentIndex = 1
-                        case "SLH":
-                            self.scoreSegmentOutlet.selectedSegmentIndex = 2
-                        case "PHL":
-                            self.priceSegmentOutlet.selectedSegmentIndex = 1
-                        case "PLH":
-                            self.priceSegmentOutlet.selectedSegmentIndex = 2
-                    default:
-                        break
-                    }
-
-                }
-
-                self.tableView.reloadData()
-            }
-
-        }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        loadUI()
     }
 }
