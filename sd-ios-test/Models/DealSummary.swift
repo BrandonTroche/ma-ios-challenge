@@ -9,10 +9,12 @@
 import Foundation
 
 struct DealSummary {
-    var price: String
+    var priceTag: String
+    var associatedPrice: Float?
     var title: String
     var extra: String
     var voteCount: Int
     var commentCount: Int
     var image: URL
+    var score: Int
 }

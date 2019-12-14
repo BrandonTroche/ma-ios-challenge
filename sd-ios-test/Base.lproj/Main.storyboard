@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Whd-uw-pwu">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Whd-uw-pwu" userLabel="sdView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="MnP-aa-QjC">
@@ -35,23 +35,89 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0az-q9-rQW">
-                                <rect key="frame" x="0.0" y="104" width="414" height="788"/>
+                                <rect key="frame" x="0.0" y="204" width="414" height="688"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TyV-29-Llc">
+                                <rect key="frame" x="0.0" y="104" width="414" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taP-eQ-Egb">
+                                        <rect key="frame" x="10" y="0.0" width="50" height="34"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Filters">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F69-iN-nGu">
+                                        <rect key="frame" x="10" y="35" width="39" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKL-Nf-eUX">
+                                        <rect key="frame" x="10" y="68" width="45" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rll-sV-I0T">
+                                        <rect key="frame" x="126" y="30" width="278" height="32"/>
+                                        <segments>
+                                            <segment title="None"/>
+                                            <segment title="High to Low"/>
+                                            <segment title="Low to High"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="priceSegmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="sSO-lE-2wu"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ozk-BB-MW2">
+                                        <rect key="frame" x="126" y="64" width="278" height="32"/>
+                                        <segments>
+                                            <segment title="None"/>
+                                            <segment title="High to Low"/>
+                                            <segment title="Low to High"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="scoreSegmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="2fm-7I-gUj"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ozk-BB-MW2" firstAttribute="top" secondItem="rll-sV-I0T" secondAttribute="bottom" constant="3" id="41H-Q2-7UC"/>
+                                    <constraint firstItem="bKL-Nf-eUX" firstAttribute="leading" secondItem="TyV-29-Llc" secondAttribute="leading" constant="10" id="9wa-lk-ZR5"/>
+                                    <constraint firstAttribute="height" constant="100" id="BKU-MX-nGb"/>
+                                    <constraint firstItem="ozk-BB-MW2" firstAttribute="top" secondItem="rll-sV-I0T" secondAttribute="bottom" constant="3" id="G56-Sp-Fvw"/>
+                                    <constraint firstAttribute="trailing" secondItem="rll-sV-I0T" secondAttribute="trailing" constant="10" id="QfF-LB-HCE"/>
+                                    <constraint firstAttribute="bottom" secondItem="bKL-Nf-eUX" secondAttribute="bottom" constant="11" id="WZ6-Gv-aid"/>
+                                    <constraint firstItem="taP-eQ-Egb" firstAttribute="leading" secondItem="TyV-29-Llc" secondAttribute="leading" constant="10" id="Wdr-LX-BLO"/>
+                                    <constraint firstItem="F69-iN-nGu" firstAttribute="leading" secondItem="TyV-29-Llc" secondAttribute="leading" constant="10" id="fWf-ch-LU0"/>
+                                    <constraint firstItem="F69-iN-nGu" firstAttribute="top" secondItem="taP-eQ-Egb" secondAttribute="bottom" constant="1" id="lgm-cC-v5y"/>
+                                    <constraint firstItem="bKL-Nf-eUX" firstAttribute="top" secondItem="F69-iN-nGu" secondAttribute="bottom" constant="12" id="m3s-fK-R4t"/>
+                                    <constraint firstItem="taP-eQ-Egb" firstAttribute="top" secondItem="TyV-29-Llc" secondAttribute="top" id="sNw-rp-PVp"/>
+                                    <constraint firstAttribute="bottom" secondItem="ozk-BB-MW2" secondAttribute="bottom" constant="5" id="vES-3p-i46"/>
+                                    <constraint firstAttribute="trailing" secondItem="ozk-BB-MW2" secondAttribute="trailing" constant="10" id="xwK-8y-IrP"/>
+                                    <constraint firstItem="bKL-Nf-eUX" firstAttribute="top" secondItem="F69-iN-nGu" secondAttribute="bottom" constant="12" id="za2-Yr-hcA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="0az-q9-rQW" firstAttribute="top" secondItem="TyV-29-Llc" secondAttribute="bottom" id="G0m-9C-PQf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Whd-uw-pwu" secondAttribute="trailing" id="LqF-bA-uFN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0az-q9-rQW" secondAttribute="bottom" constant="-30" id="PUZ-77-Vae"/>
                             <constraint firstItem="0az-q9-rQW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="o6m-nb-hyK"/>
-                            <constraint firstItem="0az-q9-rQW" firstAttribute="top" secondItem="Whd-uw-pwu" secondAttribute="bottom" id="uat-sr-zKv"/>
+                            <constraint firstItem="TyV-29-Llc" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="rm8-hx-SO6"/>
                             <constraint firstItem="Whd-uw-pwu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uzx-D4-U2T"/>
+                            <constraint firstItem="TyV-29-Llc" firstAttribute="top" secondItem="Whd-uw-pwu" secondAttribute="bottom" id="xhc-IQ-Wo7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0az-q9-rQW" secondAttribute="trailing" id="xi3-Sc-Zsx"/>
                             <constraint firstItem="Whd-uw-pwu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ysx-Ph-AJj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="priceSegmentOutlet" destination="rll-sV-I0T" id="45f-GW-1rb"/>
+                        <outlet property="scoreSegmentOutlet" destination="ozk-BB-MW2" id="zrR-BH-SlP"/>
                         <outlet property="tableView" destination="0az-q9-rQW" id="QMe-Xn-Yy8"/>
                     </connections>
                 </viewController>

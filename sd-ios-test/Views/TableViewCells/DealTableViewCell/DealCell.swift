@@ -18,7 +18,7 @@ class DealCell: UITableViewCell {
     @IBOutlet weak var dealImage: UIImageView!
 
     func configure(dealSummary: DealSummary) {
-        priceLabel.text = "\(dealSummary.price)"
+        priceLabel.text = "\(dealSummary.priceTag)"
         nameLabel.text = "\(dealSummary.title)"
         extraLabel.text = "\(dealSummary.extra)"
         votesLabel.text = "\(dealSummary.voteCount)"
