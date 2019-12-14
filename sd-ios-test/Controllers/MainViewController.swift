@@ -26,6 +26,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return totalLabel
     }()
 
+    let defaults = UserDefaults.standard
+
     var dealsArrayOriginal: [DealSummary] = []
     var dealsArrayWorking: [DealSummary] = [] {
         didSet {
@@ -64,6 +66,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func sortList(by sortKind: String) {
+        defaults.set(sortKind, forKey: "filter")
         switch sortKind {
         case "SHL":
             dealsArrayWorking = dealsArrayOriginal.sorted { $0.score > $1.score }
@@ -122,7 +125,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             totalLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10)
         ])
 
+        print(self.defaults.string(forKey: "filter"))
+
         fetchData()
+
     }
 
     func parsePrice(price: String?) -> Float? {
@@ -171,6 +177,21 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     score: deal.getScore()
                                     )
                     )
+
+                    guard let filterSetting = self.defaults.string(forKey: "filter") else { return }
+                    self.sortList(by: filterSetting)
+                    switch filterSetting {
+                        case "SHL":
+                            self.scoreSegmentOutlet.selectedSegmentIndex = 1
+                        case "SLH":
+                            self.scoreSegmentOutlet.selectedSegmentIndex = 2
+                        case "PHL":
+                            self.priceSegmentOutlet.selectedSegmentIndex = 1
+                        case "PLH":
+                            self.priceSegmentOutlet.selectedSegmentIndex = 2
+                    default:
+                        break
+                    }
 
                 }
 
